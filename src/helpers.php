@@ -26,8 +26,6 @@ if (!function_exists('get_client_ip')) {
                 list($ip) = explode(',', $headers['x_forwarded_for']);
         } elseif (isset($headers['x_real_ip'])) {
             $ip = is_array($headers['x_real_ip']) ? current($headers['x_real_ip']) : $headers['x_real_ip'];
-
-
         }
 
         unset($headers);
