@@ -1,0 +1,36 @@
+throttle:
+  attempts:
+    status: true
+    limit: 1
+    expire: 60
+    redis:
+      schema: tcp
+      host: 127.0.0.11
+      port: 6379
+      password: ~
+      database: 15
+      prefix: default.throttle
+  whitelist:
+    status: true
+    lists:
+      level_one:
+        - 127
+      level_two:
+        - 127.0
+      level_three:
+        - 127.0.0
+      all:
+        - 127.0.0.1
+        - 192.168.0.1
+  blacklist:
+    status: true
+    lists:
+      level_one:
+      - 127
+      level_two:
+      - 127.0
+      level_three:
+      - 127.0.0
+      all:
+      - 127.0.0.1
+      - 192.168.0.1
