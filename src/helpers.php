@@ -20,12 +20,14 @@ if (!function_exists('get_client_ip')) {
         $ip = '0.0.0.0';
         $headers = $request->getHeaders();
 
-        if (isset($headers['x_real_ip'])) {
-            $ip = is_array($headers['x_real_ip']) ? current($headers['x_real_ip']) : $headers['x_real_ip'];
-        } elseif (isset($headers['x_forwarded_for'])) {
+        if (isset($headers['x_forwarded_for'])) {
             is_array($headers['x_forwarded_for']) ?
                 list($ip) = explode(',', current($headers['x_forwarded_for'])) :
                 list($ip) = explode(',', $headers['x_forwarded_for']);
+        } elseif (isset($headers['x_real_ip'])) {
+            $ip = is_array($headers['x_real_ip']) ? current($headers['x_real_ip']) : $headers['x_real_ip'];
+
+
         }
 
         unset($headers);
