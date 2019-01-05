@@ -20,7 +20,7 @@ class ThrottleRequestProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $throttle = ['throttle' => (app()->getPath() . '/config/throttle.php')];
+        $throttle = ['throttle' => load(app()->getPath() . '/config/throttle.php')];
         if (file_exists(app()->getPath() . '/.throttle.yml')) {
             $throttle = array_merge(
                 $throttle,
