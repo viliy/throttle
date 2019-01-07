@@ -87,8 +87,8 @@ class ThrottleRequest extends Middleware
         list($one, $two, $three) = explode('.', $this->ip);
 
         if (isset($whites['level_one']) && in_array($one, $whites['level_one'])) {
-        } elseif (isset($whites['level_two']) && in_array($two, $whites['level_two'])) {
-        } elseif (isset($whites['level_three']) && in_array($three, $whites['level_three'])) {
+        } elseif (isset($whites['level_two']) && in_array($one . '.' . $two, $whites['level_two'])) {
+        } elseif (isset($whites['level_three']) && in_array($one . '.' . $two . '.' . $three, $whites['level_three'])) {
         } elseif (isset($whites['all']) && in_array($this->ip, $whites['all'])) {
         } else {
 
@@ -111,8 +111,8 @@ class ThrottleRequest extends Middleware
         list($one, $two, $three) = explode('.', $this->ip);
 
         if (isset($whites['level_one']) && in_array($one, $lists['level_one'])) {
-        } elseif (isset($whites['level_two']) && in_array($two, $lists['level_two'])) {
-        } elseif (isset($whites['level_three']) && in_array($three, $lists['level_three'])) {
+        } elseif (isset($whites['level_two']) && in_array($one . '.' . $two, $lists['level_two'])) {
+        } elseif (isset($whites['level_three']) && in_array($one . '.' . $two . '.' . $three, $lists['level_three'])) {
         } elseif (isset($whites['all']) && in_array($this->ip, $lists['all'])) {
         } else {
             return true;
